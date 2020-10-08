@@ -1,5 +1,6 @@
 {
   "name": "mui-firebase-async-seo",
+  "homepage": "https://cra-mui-async-seo.web.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
