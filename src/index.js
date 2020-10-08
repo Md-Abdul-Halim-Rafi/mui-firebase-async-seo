@@ -1,18 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Homepage from "./pages/homapage/Homapage";
+import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/core/styles";
 
+import HashLinks from "./hashLinks";
 import baseTheme from "./theme/baseTheme";
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={baseTheme}>
       <CssBaseline />
-      <Homepage />
+      <BrowserRouter basename='/'>
+        <HashLinks />
+      </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
