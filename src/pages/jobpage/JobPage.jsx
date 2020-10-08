@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SEO from "../../seo";
 import axios from "axios";
 import { CircularProgress, Typography, Container } from "@material-ui/core";
 
@@ -8,6 +9,10 @@ const JobPage = (props) => {
 
   useEffect(() => {
     getJobDescription();
+
+    return () => {
+      setJob(undefined);
+    };
   }, []);
 
   const getJobDescription = () => {
@@ -21,22 +26,29 @@ const JobPage = (props) => {
       .catch((err) => setJob(null));
   };
 
+  console.log(job);
+
   return (
-    <Container maxWidth='sm'>
-      {typeof job === "undefined" ? (
-        <div style={{ textAlign: "center", width: "100%" }}>
-          <CircularProgress disableShrink />
-        </div>
-      ) : (
-        <div>
-          {job === null ? (
-            <Typography>Couldn't fetch</Typography>
-          ) : (
-            <div dangerouslySetInnerHTML={{ __html: job.description }} />
-          )}
-        </div>
-      )}
-    </Container>
+    <div>
+      <Container maxWidth='sm'>
+        {typeof job === "undefined" ? (
+          <div style={{ textAlign: "center", width: "100%" }}>
+            <CircularProgress disableShrink />
+          </div>
+        ) : (
+          <div>
+            {job === null ? (
+              <Typography>Couldn't fetch</Typography>
+            ) : (
+              <div>
+                <SEO title={job.title} pathname={props.location.pathname} />
+                <div dangerouslySetInnerHTML={{ __html: job.description }} />
+              </div>
+            )}
+          </div>
+        )}
+      </Container>
+    </div>
   );
 };
 

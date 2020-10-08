@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SEO from "../../seo";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -36,7 +37,7 @@ function Copyright() {
   );
 }
 
-function Homepage() {
+function Homepage(props) {
   const classes = useStyles();
   const [search, setSearch] = useState("node");
   const [loading, setLoading] = useState(false);
@@ -66,45 +67,49 @@ function Homepage() {
   };
 
   return (
-    <Container maxWidth='md'>
-      <Box my={4}>
-        <Typography variant='h4' component='h1' gutterBottom>
-          Search for job
-        </Typography>
-        <div className={classes.searchDiv}>
-          <TextField
-            className={classes.textField}
-            placeholder='Search job type, e.g. node'
-            variant='outlined'
-            size='small'
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-          />
-          <Button onClick={searchJobs} variant='contained' color='primary'>
-            Search
-          </Button>
-        </div>
+    <div>
+      <SEO title='React Async SEO' />
 
-        <div style={{ margin: "30px 0" }}>
-          {loading ? (
-            <div style={{ textAlign: "center", width: "100%" }}>
-              <CircularProgress disableShrink />
-            </div>
-          ) : (
-            <div>
-              {errMsg ? (
-                <Typography>{errMsg}</Typography>
-              ) : (
-                <div>{jobs && <JobLists jobs={jobs} />}</div>
-              )}
-            </div>
-          )}
-        </div>
+      <Container maxWidth='md'>
+        <Box my={4}>
+          <Typography variant='h4' component='h1' gutterBottom>
+            Search for job
+          </Typography>
+          <div className={classes.searchDiv}>
+            <TextField
+              className={classes.textField}
+              placeholder='Search job type, e.g. node'
+              variant='outlined'
+              size='small'
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
+            <Button onClick={searchJobs} variant='contained' color='primary'>
+              Search
+            </Button>
+          </div>
 
-        <Copyright />
-      </Box>
-    </Container>
+          <div style={{ margin: "30px 0" }}>
+            {loading ? (
+              <div style={{ textAlign: "center", width: "100%" }}>
+                <CircularProgress disableShrink />
+              </div>
+            ) : (
+              <div>
+                {errMsg ? (
+                  <Typography>{errMsg}</Typography>
+                ) : (
+                  <div>{jobs && <JobLists jobs={jobs} />}</div>
+                )}
+              </div>
+            )}
+          </div>
+
+          <Copyright />
+        </Box>
+      </Container>
+    </div>
   );
 }
 
