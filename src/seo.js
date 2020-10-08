@@ -90,8 +90,21 @@ const SEO = ({ title, pathname, image, desctiption }) => {
           name: `twitter:description`,
           content: desctiption,
         },
-      ]}
-    />
+      ]}>
+      <meta
+        name='google-site-verification'
+        content='m7_ousE3O2yTTOWP_E5lkcTlFIBlX69S1aTj29y_ld8'
+      />
+      <script type='application/ld+json'>
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          url: "https://cra-mui-async-seo.web.app/",
+          logo:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/220px-React-icon.svg.png",
+        })}
+      </script>
+    </Helmet>
   );
 };
 
