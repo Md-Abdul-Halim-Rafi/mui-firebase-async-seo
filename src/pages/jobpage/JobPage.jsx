@@ -13,12 +13,14 @@ const JobPage = (props) => {
     return () => {
       setJob(undefined);
     };
+
+    // eslint-disable-next-line
   }, []);
 
   const getJobDescription = () => {
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions/${id}.json`
+        `https://jsonplaceholder.typicode.com/photos/${id}`
       )
       .then((res) => {
         setJob(res.data);
@@ -30,7 +32,7 @@ const JobPage = (props) => {
 
   return (
     <div>
-      <Container maxWidth='sm'>
+      <Container maxWidth="sm">
         {typeof job === "undefined" ? (
           <div style={{ textAlign: "center", width: "100%" }}>
             <CircularProgress disableShrink />
@@ -41,8 +43,31 @@ const JobPage = (props) => {
               <Typography>Couldn't fetch</Typography>
             ) : (
               <div>
-                <SEO title={job.title} pathname={props.location.pathname} />
-                <div dangerouslySetInnerHTML={{ __html: job.description }} />
+                <SEO
+                  title={job.title}
+                  // desctiption={job.description.slice(0, 100)}
+                  desctiption={job.title}
+                  pathname={props.location.pathname}
+                  image={job.thumbnailUrl}
+                />
+                <div
+                  style={{
+                    marginTop: "20px",
+                    maxWidth: "600px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <img
+                    style={{
+                      width: "100%",
+                      height: "300px",
+                      objectFit: "cover",
+                    }}
+                    src={job.thumbnailUrl || "https://cdn.mainlycoding.com/admin/rafee.png"}
+                    alt={job.title}
+                  />
+                </div>
+                <div dangerouslySetInnerHTML={{ __html: job.title }} />
               </div>
             )}
           </div>

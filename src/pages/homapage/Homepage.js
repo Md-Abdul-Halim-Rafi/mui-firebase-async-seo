@@ -46,17 +46,19 @@ function Homepage(props) {
 
   useEffect(() => {
     searchJobs();
+    // eslint-disable-next-line
   }, []);
 
   const searchJobs = () => {
     setLoading(true);
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?search=${search}`
+        // `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?search=${search}`
+        "https://jsonplaceholder.typicode.com/photos"
       )
       .then((res) => {
-        // console.log(res.data);
-        setJobs(res.data);
+        // console.log(res.data.slice(0,15));
+        setJobs(res.data.slice(0,15));
         setLoading(false);
       })
       .catch((err) => {
@@ -68,7 +70,7 @@ function Homepage(props) {
 
   return (
     <div>
-      <SEO title='React Async SEO' />
+      <SEO title='React SSR seo' />
 
       <Container maxWidth='md'>
         <Box my={4}>

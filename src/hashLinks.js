@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import HomePage from "./pages/homapage/Homepage";
 import JobPage from "./pages/jobpage/JobPage";
+import NotFoundPage from "./pages/404";
 
 class HashLinks extends Component {
   render() {
@@ -10,7 +11,8 @@ class HashLinks extends Component {
       <div>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route path='/job/:id' component={JobPage} />
+          <Route exact path='/job/:id' component={JobPage} />
+          <Route component={NotFoundPage} />
         </Switch>
       </div>
     );

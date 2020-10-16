@@ -101,7 +101,7 @@ const SEO = ({ title, pathname, image, desctiption }) => {
           "@type": "Organization",
           url: "https://cra-mui-async-seo.web.app/",
           logo:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/220px-React-icon.svg.png",
+            "https://cdn.mainlycoding.com/admin/rafee.png",
         })}
       </script>
     </Helmet>
@@ -109,10 +109,10 @@ const SEO = ({ title, pathname, image, desctiption }) => {
 };
 
 SEO.defaultProps = {
-  title: `MUI firebase async seo`,
+  title: `React ssr seo`,
   pathname: `/`,
   image:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/220px-React-icon.svg.png",
+    "https://cdn.mainlycoding.com/admin/rafee.png",
   description: `Combinations of ReactJs and Material UI Asynchronus SEO with github job api`,
 };
 
